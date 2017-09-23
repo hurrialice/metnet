@@ -15,7 +15,7 @@ rm0$type <- 'exon'
 rmdf <- DataFrame(rm0)
 rmgr <- makeGRangesFromDataFrame(rmdf, keep.extra.columns = TRUE)
 rm(rm, rm0)
-
+write_rds(rmgr, 'mgr18w.rds')
 # read FPKM values.
 d <- read_rds('srr_withgtfs.rds')
 msites <- read_rds('msites.rds')

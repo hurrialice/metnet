@@ -36,5 +36,5 @@ sdnm_filter <- function(m, qm, qsd){
     m[,retain]
 }
 
-test_m <- sdnm_filter(s.expm, 0.9 ,  0.9)
-write_rds(test_m, 'test_m0922.rds')
+test_exp <- sdnm_filter(s.expm, 0.9 ,  0.9)
+write_rds(test_exp, 'test_exp_f.rds')
