@@ -1,9 +1,9 @@
 library(readr)
 library(dplyr)
 library(tibble)
-gene_pool <- read_rds('sorted_genes.rds')
 
-
+sample_tab <- read_table('/home/qingzhang/stringtie-merged/abun/p001_HEK293T_S1_SYSY_input_SRR494613.tab')
+gene_pool <- sample_tab$`Gene ID` # tested consistent in all samples
 
 
 uni_tab <- function(t){
@@ -22,7 +22,7 @@ uni_tab <- function(t){
 
 d <- read_rds('srr_withgtfs.rds')
 d <- d %>% dplyr::filter(grepl("_input", wecall))
-home_path <- "/home/qingzhang/meth-qing/stringtie-exps-merged1/abun/"
+home_path <- "/home/qingzhang/stringtie-merged/abun/"
 file_names <- paste0(d$wecall, ".tab")
 
 
@@ -42,6 +42,6 @@ for (i in seq_along(file_names)){
     mc[srr_id,] <- t1$FPKM[match(colnames(mc), t1$geneName)]
 }
 
-write_rds(mc, 'test_exp_raw.rds')
+write_rds(mc, 'test_exp_ens.rds')
 
 
