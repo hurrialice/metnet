@@ -13,8 +13,10 @@ cds$type <- 'cds'
 colnames(mcols(cds))[1] <- 'transcript_id'
 cds$exon_rank <- NULL
 
-pre_guide <- do.call("c", list(e,cds))
+pre_guide <- do.call("c", list(e,cds)) 
+rm(e, cds)
 
-
-
-export(pre_guide, 'ens_v75.gtf')
+t <- keepStandardChromosomes(pre_guide, pruning.mode = 'coarse')
+newStyle <- mapSeqlevels(seqlevels(t),"UCSC")
+t <- renameSeqlevels(t, newStyle)
+export(t, 'ens_v75.gtf')
