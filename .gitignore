@@ -1,2 +1,11 @@
-data
+
+data/
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+*.rds
+*.RData
+*.swp
+
